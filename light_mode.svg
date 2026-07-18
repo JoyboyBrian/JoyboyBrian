@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="985px" height="530px" viewBox="0 0 985 530" font-size="16px" role="img" aria-labelledby="title desc">
+<title id="title">Zhengyang (Brian) Guo GitHub profile</title>
+<desc id="desc">Developer profile and live GitHub statistics with an ASCII avatar.</desc>
+<style>
+@font-face {
+src: local('Consolas'), local('Consolas Bold');
+font-family: 'ConsolasFallback';
+font-display: swap;
+-webkit-size-adjust: 109%;
+size-adjust: 109%;
+}
+.key {fill: #953800;}
+.value {fill: #0a3069;}
+.cc {fill: #c2cfde;}
+.add {fill: #1a7f37;}
+.delete {fill: #cf222e;}
+.ascii {font-size: 9.8px;}
+text, tspan {white-space: pre;}
+</style>
+<rect width="985px" height="530px" fill="#f6f8fa" rx="15"/>
+<text x="15" y="24" fill="#24292f" class="ascii">
+<tspan x="15" y="24.0">                          ........</tspan>
+<tspan x="15" y="37.2">                      -:::::::::::::::-..</tspan>
+<tspan x="15" y="50.5">                    -::-----------------:::-</tspan>
+<tspan x="15" y="63.7">                 . -:----------------------::-</tspan>
+<tspan x="15" y="77.0">          .:+++::::-----------------------:---:-</tspan>
+<tspan x="15" y="90.2">        -++:------------------------------------:-</tspan>
+<tspan x="15" y="103.5">       +::--:--------::::-------------:::--------::-</tspan>
+<tspan x="15" y="116.7">      +------------::+=========*===+::--:--:-------::</tspan>
+<tspan x="15" y="129.9">     ::-----:::-:+==******************=+::::--------+</tspan>
+<tspan x="15" y="143.2">    .:---------:==**********************=:----------:.</tspan>
+<tspan x="15" y="156.4">    +---------+=*************************=+----------:</tspan>
+<tspan x="15" y="169.7">   -:--------+=***************************=+---------+</tspan>
+<tspan x="15" y="182.9">   .+-------:==*************##************==+------::-</tspan>
+<tspan x="15" y="196.2">    .+-----:+=**=++++===**#####***==++++++===+----:-+</tspan>
+<tspan x="15" y="209.4">     ::----:=*=+:+++======******========++:===+:---:-</tspan>
+<tspan x="15" y="222.6">      -:--:=**==**####********************=+===::-:+</tspan>
+<tspan x="15" y="235.9">     .:=:-:=*****===:++==*********==::+=+==***=+::+=+</tspan>
+<tspan x="15" y="249.1">    .*===::*****===*===************************+:==*+</tspan>
+<tspan x="15" y="262.4">     *=**++***********************#************++*==</tspan>
+<tspan x="15" y="275.6">     -***==*******##**#************#**##******===**</tspan>
+<tspan x="15" y="288.9">      =**==********###***********************==+==+</tspan>
+<tspan x="15" y="302.1">       +**==*******************====*********====*=</tspan>
+<tspan x="15" y="315.4">        -=***************=========*********====:-</tspan>
+<tspan x="15" y="328.6">            -***********************=*******=*</tspan>
+<tspan x="15" y="341.8">             :*******=+==*******===:+=*****=*-</tspan>
+<tspan x="15" y="355.1">              :*******=+++=======+++******=*.</tspan>
+<tspan x="15" y="368.3">               .********===========*****===:</tspan>
+<tspan x="15" y="381.6">                -**********************===*.</tspan>
+<tspan x="15" y="394.8">                 *===*****************=====.</tspan>
+<tspan x="15" y="408.1">                 *=====**************=++===:</tspan>
+<tspan x="15" y="421.3">               .+*========********==++======:.</tspan>
+<tspan x="15" y="434.5">          .-:+=******==========+++++=========*=+-.</tspan>
+<tspan x="15" y="447.8">     ..-:+:::+***********====================**::+++:-.</tspan>
+<tspan x="15" y="461.0">.-::+:::::::::=*****************====****===***+::::::::++:-.</tspan>
+<tspan x="15" y="474.3">:::::::::::::::+***************==******==***=:::::::::::::::</tspan>
+<tspan x="15" y="487.5">:::::::::::::::::=************************=+::::::::::::::::</tspan>
+<tspan x="15" y="500.8">:::::::::::::::::::+==****************==+:::::::::::::::::::</tspan>
+<tspan x="15" y="514.0">:::::::::::::::::::::::++==*******==+:::::::::::::::::::::::</tspan>
+</text>
+<g fill="#24292f">
+<text x="390" y="30">brian@github -——————————————————————————————————————————-—-</text>
+<text x="390.0" y="50" class="cc">. </text>
+<text x="409.0" y="50" class="key">OS</text>
+<text x="428.0" y="50">:</text>
+<text x="437.5" y="50" class="cc"> ................................... </text>
+<text x="789.0" y="50" class="value">macOS, iOS, Linux</text>
+<text x="390.0" y="70" class="cc">. </text>
+<text x="409.0" y="70" class="key">Uptime</text>
+<text x="466.0" y="70">:</text>
+<text x="475.5" y="70" class="cc"> ..................... </text>
+<text x="694.0" y="70" class="value">26 years, 9 months, 12 days</text>
+<text x="390.0" y="90" class="cc">. </text>
+<text x="409.0" y="90" class="key">Host</text>
+<text x="447.0" y="90">:</text>
+<text x="456.5" y="90" class="cc"> ........................................ </text>
+<text x="855.5" y="90" class="value">Osmosis AI</text>
+<text x="390.0" y="110" class="cc">. </text>
+<text x="409.0" y="110" class="key">Kernel</text>
+<text x="466.0" y="110">:</text>
+<text x="475.5" y="110" class="cc"> ............................... </text>
+<text x="789.0" y="110" class="value">Software Engineer</text>
+<text x="390.0" y="130" class="cc">. </text>
+<text x="409.0" y="130" class="key">Location</text>
+<text x="485.0" y="130">:</text>
+<text x="494.5" y="130" class="cc"> ............................. </text>
+<text x="789.0" y="130" class="value">San Francisco, CA</text>
+<text x="390.0" y="150" class="cc">. </text>
+<text x="409.0" y="150" class="key">Focus</text>
+<text x="456.5" y="150">:</text>
+<text x="466.0" y="150" class="cc"> .............................. </text>
+<text x="770.0" y="150" class="value">RL, developer tools</text>
+<text x="390.0" y="170" class="cc">. </text>
+<text x="409.0" y="170" class="key">IDE</text>
+<text x="437.5" y="170">:</text>
+<text x="447.0" y="170" class="cc"> ............................................. </text>
+<text x="893.5" y="170" class="value">Cursor</text>
+<text x="390.0" y="190" class="cc">. </text>
+<text x="409.0" y="190" class="key">Languages.Programming</text>
+<text x="608.5" y="190">:</text>
+<text x="618.0" y="190" class="cc"> ............... </text>
+<text x="779.5" y="190" class="value">Python, TypeScript</text>
+<text x="390.0" y="210" class="cc">. </text>
+<text x="409.0" y="210" class="key">Languages.Computer</text>
+<text x="580.0" y="210">:</text>
+<text x="589.5" y="210" class="cc"> .... </text>
+<text x="646.5" y="210" class="value">Markdown, SQL, LaTeX, JSON, YAML</text>
+<text x="390.0" y="230" class="cc">. </text>
+<text x="409.0" y="230" class="key">Languages.Real</text>
+<text x="542.0" y="230">:</text>
+<text x="551.5" y="230" class="cc"> ....................... </text>
+<text x="789.0" y="230" class="value">Mandarin, English</text>
+<text x="390.0" y="250" class="cc">. </text>
+<text x="409.0" y="250" class="key">Tools.AI</text>
+<text x="485.0" y="250">:</text>
+<text x="494.5" y="250" class="cc"> ............................ </text>
+<text x="779.5" y="250" class="value">Codex, Claude Code</text>
+<text x="390.0" y="270" class="cc">. </text>
+<text x="409.0" y="270" class="key">Frameworks</text>
+<text x="504.0" y="270">:</text>
+<text x="513.5" y="270" class="cc"> .............. </text>
+<text x="665.5" y="270" class="value">OpenAI Agents, Strands, Harbor</text>
+<text x="390.0" y="290" class="cc">. </text>
+<text x="409.0" y="290" class="key">Stack.Application</text>
+<text x="570.5" y="290">:</text>
+<text x="580.0" y="290" class="cc"> .............. </text>
+<text x="732.0" y="290" class="value">Next.js, React, FastAPI</text>
+<text x="390.0" y="310" class="cc">. </text>
+<text x="409.0" y="310" class="key">Stack.Infrastructure</text>
+<text x="599.0" y="310">:</text>
+<text x="608.5" y="310" class="cc"> ........ </text>
+<text x="703.5" y="310" class="value">AWS, EKS, Docker, SkyPilot</text>
+<text x="390.0" y="330" class="cc">. </text>
+<text x="409.0" y="330" class="key">Stack.Data</text>
+<text x="504.0" y="330">:</text>
+<text x="513.5" y="330" class="cc"> ........................ </text>
+<text x="760.5" y="330" class="value">PostgreSQL, Temporal</text>
+<text x="390" y="350">- Contact -—————————————————————————————————————————————-—-</text>
+<text x="390.0" y="370" class="cc">. </text>
+<text x="409.0" y="370" class="key">Company.Website</text>
+<text x="551.5" y="370">:</text>
+<text x="561.0" y="370" class="cc"> ............................. </text>
+<text x="855.5" y="370" class="value">osmosis.ai</text>
+<text x="390.0" y="390" class="cc">. </text>
+<text x="409.0" y="390" class="key">LinkedIn</text>
+<text x="485.0" y="390">:</text>
+<text x="494.5" y="390" class="cc"> ................. </text>
+<text x="675.0" y="390" class="value">linkedin.com/in/zhengyang-guo</text>
+<text x="390.0" y="410" class="cc">. </text>
+<text x="409.0" y="410" class="key">Email</text>
+<text x="456.5" y="410">:</text>
+<text x="466.0" y="410" class="cc"> .................... </text>
+<text x="675.0" y="410" class="value">zhengyang.brian.guo@gmail.com</text>
+<text x="390" y="450">- GitHub Stats -————————————————————————————————————————-—-</text>
+<text x="390.0" y="470" class="cc">. </text>
+<text x="409.0" y="470" class="key">Repos</text>
+<text x="456.5" y="470">:</text>
+<text x="466.0" y="470" class="cc"> ..................... </text>
+<text x="684.5" y="470" class="value">36</text>
+<text x="703.5" y="470"> | </text>
+<text x="732.0" y="470" class="key">Stars</text>
+<text x="779.5" y="470">:</text>
+<text x="789.0" y="470" class="cc"> .............. </text>
+<text x="950.5" y="470" class="value" text-anchor="end">2</text>
+<text x="390.0" y="490" class="cc">. </text>
+<text x="409.0" y="490" class="key">Contributions (365d)</text>
+<text x="599.0" y="490">:</text>
+<text x="608.5" y="490" class="cc"> ... </text>
+<text x="656.0" y="490" class="value">2,321</text>
+<text x="703.5" y="490"> | </text>
+<text x="732.0" y="490" class="key">Followers</text>
+<text x="817.5" y="490">:</text>
+<text x="827.0" y="490" class="cc"> ......... </text>
+<text x="950.5" y="490" class="value" text-anchor="end">15</text>
+<text x="390.0" y="510" class="cc">. </text>
+<text x="409.0" y="510" class="key">GitHub LOC</text>
+<text x="504.0" y="510">:</text>
+<text x="513.5" y="510" class="cc"> .............. </text>
+<text x="732.0" y="510" class="value" text-anchor="end">123,828</text>
+<text x="732.0" y="510"> (</text>
+<text x="751.0" y="510" class="add">243,841</text>
+<text x="817.5" y="510" class="add">++</text>
+<text x="836.5" y="510">, </text>
+<text x="855.5" y="510" class="delete">120,013</text>
+<text x="922.0" y="510" class="delete">--</text>
+<text x="941.0" y="510">)</text>
+</g>
+</svg>

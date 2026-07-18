@@ -1,0 +1,103 @@
+name: Update profile
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 8 * * *"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/update-profile.yml"
+      - "assets/avatar.txt"
+      - "scripts/github_stats.py"
+      - "scripts/update_profile.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-readme-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Check LOC token configuration
+        env:
+          PROFILE_CACHE_KEY: ${{ secrets.PROFILE_CACHE_KEY }}
+          PROFILE_TOKENS: ${{ secrets.PROFILE_TOKENS }}
+        run: |
+          if [ -z "$PROFILE_TOKENS" ]; then
+            echo "PROFILE_TOKENS must contain at least one GitHub token." >&2
+            exit 1
+          fi
+          if [ -z "$PROFILE_CACHE_KEY" ]; then
+            echo "PROFILE_CACHE_KEY must contain a strong cache passphrase." >&2
+            exit 1
+          fi
+
+      - name: Restore private LOC cache
+        uses: actions/cache/restore@v5
+        with:
+          path: .cache/github-loc.json.enc
+          key: profile-loc-v2-${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            profile-loc-v2-${{ runner.os }}-
+
+      - name: Decrypt private LOC cache
+        env:
+          PROFILE_CACHE_KEY: ${{ secrets.PROFILE_CACHE_KEY }}
+        run: |
+          if [ -f .cache/github-loc.json.enc ]; then
+            openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 \
+              -in .cache/github-loc.json.enc \
+              -out .cache/github-loc.json \
+              -pass env:PROFILE_CACHE_KEY
+          fi
+
+      - name: Generate profile SVGs
+        env:
+          PROFILE_TOKENS: ${{ secrets.PROFILE_TOKENS }}
+          PROFILE_LOC_CACHE: .cache/github-loc.json
+          PROFILE_USERNAME: JoyboyBrian
+        run: python -m scripts.update_profile
+
+      - name: Encrypt private LOC cache
+        env:
+          PROFILE_CACHE_KEY: ${{ secrets.PROFILE_CACHE_KEY }}
+        run: |
+          openssl enc -aes-256-cbc -salt -pbkdf2 -iter 200000 \
+            -in .cache/github-loc.json \
+            -out .cache/github-loc.json.enc \
+            -pass env:PROFILE_CACHE_KEY
+          rm .cache/github-loc.json
+
+      - name: Save private LOC cache
+        uses: actions/cache/save@v5
+        with:
+          path: .cache/github-loc.json.enc
+          key: profile-loc-v2-${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Commit updated SVGs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dark_mode.svg light_mode.svg
+          if git diff --cached --quiet; then
+            echo "Profile data has not changed."
+          else
+            git commit -m "chore: update profile stats"
+            git push
+          fi
