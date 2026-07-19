@@ -10,7 +10,9 @@ font-display: swap;
 -webkit-size-adjust: 109%;
 size-adjust: 109%;
 }
+.section {fill: #ffa657; font-weight: 700;}
 .key {fill: #ffa657;}
+.operator {fill: #616e7f;}
 .value {fill: #a5d6ff;}
 .cc {fill: #616e7f;}
 .add {fill: #3fb950;}
@@ -59,131 +61,71 @@ text, tspan {white-space: pre;}
 <tspan x="15" y="500.8">:::::::::::::::::::+==****************==+:::::::::::::::::::</tspan>
 <tspan x="15" y="514.0">:::::::::::::::::::::::++==*******==+:::::::::::::::::::::::</tspan>
 </text>
-<g fill="#c9d1d9">
-<text x="390" y="30">brian@github -——————————————————————————————————————————-—-</text>
-<text x="390.0" y="50" class="cc">. </text>
-<text x="409.0" y="50" class="key">OS</text>
-<text x="428.0" y="50">:</text>
-<text x="437.5" y="50" class="cc"> ................................... </text>
-<text x="789.0" y="50" class="value">macOS, iOS, Linux</text>
-<text x="390.0" y="70" class="cc">. </text>
-<text x="409.0" y="70" class="key">Uptime</text>
-<text x="466.0" y="70">:</text>
-<text x="475.5" y="70" class="cc"> ..................... </text>
-<text x="694.0" y="70" class="value">26 years, 9 months, 13 days</text>
-<text x="390.0" y="90" class="cc">. </text>
-<text x="409.0" y="90" class="key">Host</text>
-<text x="447.0" y="90">:</text>
-<text x="456.5" y="90" class="cc"> ........................................ </text>
-<text x="855.5" y="90" class="value">Osmosis AI</text>
-<text x="390.0" y="110" class="cc">. </text>
-<text x="409.0" y="110" class="key">Kernel</text>
-<text x="466.0" y="110">:</text>
-<text x="475.5" y="110" class="cc"> ............................... </text>
-<text x="789.0" y="110" class="value">Software Engineer</text>
-<text x="390.0" y="130" class="cc">. </text>
-<text x="409.0" y="130" class="key">Location</text>
-<text x="485.0" y="130">:</text>
-<text x="494.5" y="130" class="cc"> ............................. </text>
-<text x="789.0" y="130" class="value">San Francisco, CA</text>
-<text x="390.0" y="150" class="cc">. </text>
-<text x="409.0" y="150" class="key">Focus</text>
-<text x="456.5" y="150">:</text>
-<text x="466.0" y="150" class="cc"> .............................. </text>
-<text x="770.0" y="150" class="value">RL, developer tools</text>
-<text x="390.0" y="170" class="cc">. </text>
-<text x="409.0" y="170" class="key">IDE</text>
-<text x="437.5" y="170">:</text>
-<text x="447.0" y="170" class="cc"> ............................................. </text>
-<text x="893.5" y="170" class="value">Cursor</text>
-<text x="390.0" y="190" class="cc">. </text>
-<text x="409.0" y="190" class="key">Languages.Programming</text>
-<text x="608.5" y="190">:</text>
-<text x="618.0" y="190" class="cc"> ............... </text>
-<text x="779.5" y="190" class="value">Python, TypeScript</text>
-<text x="390.0" y="210" class="cc">. </text>
-<text x="409.0" y="210" class="key">Languages.Computer</text>
-<text x="580.0" y="210">:</text>
-<text x="589.5" y="210" class="cc"> .... </text>
-<text x="646.5" y="210" class="value">Markdown, SQL, LaTeX, JSON, YAML</text>
-<text x="390.0" y="230" class="cc">. </text>
-<text x="409.0" y="230" class="key">Languages.Real</text>
-<text x="542.0" y="230">:</text>
-<text x="551.5" y="230" class="cc"> ....................... </text>
-<text x="789.0" y="230" class="value">Mandarin, English</text>
-<text x="390.0" y="250" class="cc">. </text>
-<text x="409.0" y="250" class="key">Tools.AI</text>
-<text x="485.0" y="250">:</text>
-<text x="494.5" y="250" class="cc"> ............................ </text>
-<text x="779.5" y="250" class="value">Codex, Claude Code</text>
-<text x="390.0" y="270" class="cc">. </text>
-<text x="409.0" y="270" class="key">Frameworks</text>
-<text x="504.0" y="270">:</text>
-<text x="513.5" y="270" class="cc"> .............. </text>
-<text x="665.5" y="270" class="value">OpenAI Agents, Strands, Harbor</text>
-<text x="390.0" y="290" class="cc">. </text>
-<text x="409.0" y="290" class="key">Stack.Application</text>
-<text x="570.5" y="290">:</text>
-<text x="580.0" y="290" class="cc"> .............. </text>
-<text x="732.0" y="290" class="value">Next.js, React, FastAPI</text>
-<text x="390.0" y="310" class="cc">. </text>
-<text x="409.0" y="310" class="key">Stack.Infrastructure</text>
-<text x="599.0" y="310">:</text>
-<text x="608.5" y="310" class="cc"> ........ </text>
-<text x="703.5" y="310" class="value">AWS, EKS, Docker, SkyPilot</text>
-<text x="390.0" y="330" class="cc">. </text>
-<text x="409.0" y="330" class="key">Stack.Data</text>
-<text x="504.0" y="330">:</text>
-<text x="513.5" y="330" class="cc"> ........................ </text>
-<text x="760.5" y="330" class="value">PostgreSQL, Temporal</text>
-<text x="390" y="350">- Contact -—————————————————————————————————————————————-—-</text>
-<text x="390.0" y="370" class="cc">. </text>
-<text x="409.0" y="370" class="key">Company.Website</text>
-<text x="551.5" y="370">:</text>
-<text x="561.0" y="370" class="cc"> ............................. </text>
-<text x="855.5" y="370" class="value">osmosis.ai</text>
-<text x="390.0" y="390" class="cc">. </text>
-<text x="409.0" y="390" class="key">LinkedIn</text>
-<text x="485.0" y="390">:</text>
-<text x="494.5" y="390" class="cc"> ................. </text>
-<text x="675.0" y="390" class="value">linkedin.com/in/zhengyang-guo</text>
-<text x="390.0" y="410" class="cc">. </text>
-<text x="409.0" y="410" class="key">Email</text>
-<text x="456.5" y="410">:</text>
-<text x="466.0" y="410" class="cc"> .................... </text>
-<text x="675.0" y="410" class="value">zhengyang.brian.guo@gmail.com</text>
-<text x="390" y="450">- GitHub Stats -————————————————————————————————————————-—-</text>
-<text x="390.0" y="470" class="cc">. </text>
-<text x="409.0" y="470" class="key">Repos</text>
-<text x="456.5" y="470">:</text>
-<text x="466.0" y="470" class="cc"> ..................... </text>
-<text x="684.5" y="470" class="value">36</text>
-<text x="703.5" y="470"> | </text>
-<text x="732.0" y="470" class="key">Stars</text>
-<text x="779.5" y="470">:</text>
-<text x="789.0" y="470" class="cc"> .............. </text>
-<text x="950.5" y="470" class="value" text-anchor="end">2</text>
-<text x="390.0" y="490" class="cc">. </text>
-<text x="409.0" y="490" class="key">Contributions (365d)</text>
-<text x="599.0" y="490">:</text>
-<text x="608.5" y="490" class="cc"> ... </text>
-<text x="656.0" y="490" class="value">2,328</text>
-<text x="703.5" y="490"> | </text>
-<text x="732.0" y="490" class="key">Followers</text>
-<text x="817.5" y="490">:</text>
-<text x="827.0" y="490" class="cc"> ......... </text>
-<text x="950.5" y="490" class="value" text-anchor="end">15</text>
-<text x="390.0" y="510" class="cc">. </text>
-<text x="409.0" y="510" class="key">GitHub LOC</text>
-<text x="504.0" y="510">:</text>
-<text x="513.5" y="510" class="cc"> .............. </text>
-<text x="732.0" y="510" class="value" text-anchor="end">125,218</text>
-<text x="732.0" y="510"> (</text>
-<text x="751.0" y="510" class="add">245,249</text>
-<text x="817.5" y="510" class="add">++</text>
-<text x="836.5" y="510">, </text>
-<text x="855.5" y="510" class="delete">120,031</text>
-<text x="922.0" y="510" class="delete">--</text>
-<text x="941.0" y="510">)</text>
+<g fill="#c9d1d9" class="toml" font-size="14px">
+<text x="390.0" y="30" class="section">[brian.system]</text>
+<text x="390.0" y="50" class="key">os</text>
+<text x="406.6" y="50" class="operator">       = </text>
+<text x="481.3" y="50" class="value">[&quot;macOS&quot;, &quot;iOS&quot;, &quot;Linux&quot;]</text>
+<text x="390.0" y="70" class="key">uptime</text>
+<text x="439.8" y="70" class="operator">   = </text>
+<text x="481.3" y="70" class="value">&quot;26 years, 9 months, 13 days&quot;</text>
+<text x="390.0" y="90" class="key">host</text>
+<text x="423.2" y="90" class="operator">     = </text>
+<text x="481.3" y="90" class="value">&quot;Osmosis AI&quot;</text>
+<text x="390.0" y="110" class="key">kernel</text>
+<text x="439.8" y="110" class="operator">   = </text>
+<text x="481.3" y="110" class="value">&quot;Software Engineer&quot;</text>
+<text x="390.0" y="130" class="key">location</text>
+<text x="456.4" y="130" class="operator"> = </text>
+<text x="481.3" y="130" class="value">&quot;San Francisco, CA&quot;</text>
+<text x="390.0" y="150" class="section">[brian.developer]</text>
+<text x="390.0" y="170" class="key">focus</text>
+<text x="431.5" y="170" class="operator">                 = </text>
+<text x="589.2" y="170" class="value">[&quot;RL&quot;, &quot;developer tools&quot;]</text>
+<text x="390.0" y="190" class="key">ide</text>
+<text x="414.9" y="190" class="operator">                   = </text>
+<text x="589.2" y="190" class="value">&quot;Cursor&quot;</text>
+<text x="390.0" y="210" class="key">languages.programming</text>
+<text x="564.3" y="210" class="operator"> = </text>
+<text x="589.2" y="210" class="value">[&quot;Python&quot;, &quot;TypeScript&quot;]</text>
+<text x="390.0" y="230" class="key">languages.computer</text>
+<text x="539.4" y="230" class="operator">    = </text>
+<text x="589.2" y="230" class="value">[&quot;Markdown&quot;, &quot;SQL&quot;, &quot;LaTeX&quot;, &quot;JSON&quot;, &quot;YAML&quot;]</text>
+<text x="390.0" y="250" class="key">languages.real</text>
+<text x="506.2" y="250" class="operator">        = </text>
+<text x="589.2" y="250" class="value">[&quot;Mandarin&quot;, &quot;English&quot;]</text>
+<text x="390.0" y="270" class="key">tools.ai</text>
+<text x="456.4" y="270" class="operator">              = </text>
+<text x="589.2" y="270" class="value">[&quot;Codex&quot;, &quot;Claude Code&quot;]</text>
+<text x="390.0" y="290" class="key">frameworks</text>
+<text x="473.0" y="290" class="operator">            = </text>
+<text x="589.2" y="290" class="value">[&quot;OpenAI Agents&quot;, &quot;Strands&quot;, &quot;Harbor&quot;]</text>
+<text x="390.0" y="310" class="section">[brian.stack]</text>
+<text x="390.0" y="330" class="key">application</text>
+<text x="481.3" y="330" class="operator">    = </text>
+<text x="531.1" y="330" class="value">[&quot;Next.js&quot;, &quot;React&quot;, &quot;FastAPI&quot;]</text>
+<text x="390.0" y="350" class="key">infrastructure</text>
+<text x="506.2" y="350" class="operator"> = </text>
+<text x="531.1" y="350" class="value">[&quot;AWS&quot;, &quot;EKS&quot;, &quot;Docker&quot;, &quot;SkyPilot&quot;]</text>
+<text x="390.0" y="370" class="key">data</text>
+<text x="423.2" y="370" class="operator">           = </text>
+<text x="531.1" y="370" class="value">[&quot;PostgreSQL&quot;, &quot;Temporal&quot;]</text>
+<text x="390.0" y="390" class="section">[brian.contact]</text>
+<text x="390.0" y="410" class="key">website</text>
+<text x="448.1" y="410" class="operator">  = </text>
+<text x="481.3" y="410" class="value">{ personal=&quot;zhengyang.sh&quot;, company=&quot;osmosis.ai&quot; }</text>
+<text x="390.0" y="430" class="key">linkedin</text>
+<text x="456.4" y="430" class="operator"> = </text>
+<text x="481.3" y="430" class="value">&quot;linkedin.com/in/zhengyang-guo&quot;</text>
+<text x="390.0" y="450" class="key">email</text>
+<text x="431.5" y="450" class="operator">    = </text>
+<text x="481.3" y="450" class="value">&quot;zhengyang.brian.guo@gmail.com&quot;</text>
+<text x="390.0" y="470" class="section">[brian.github]</text>
+<text x="390.0" y="490" class="key">stats</text>
+<text x="431.5" y="490" class="operator"> = </text>
+<text x="456.4" y="490" class="value">{ repos=36, stars=2, contrib=2_328, followers=15 }</text>
+<text x="390.0" y="510" class="key">loc</text>
+<text x="414.9" y="510" class="operator">   = </text>
+<text x="456.4" y="510" class="value">{ net=125_218, additions=245_249, deletions=120_031 }</text>
 </g>
 </svg>

@@ -29,8 +29,8 @@ CARD_WIDTH = 985
 CARD_HEIGHT = 530
 AVATAR_X = 15
 TEXT_X = 390
-TEXT_COLUMNS = 59
-CHAR_WIDTH = 9.5
+TOML_COLUMNS = 69
+CHAR_WIDTH = 8.3
 
 # Static profile details. GitHub statistics are fetched at runtime.
 PROFILE = {
@@ -50,7 +50,8 @@ PROFILE = {
     "stack_application": "Next.js, React, FastAPI",
     "stack_infrastructure": "AWS, EKS, Docker, SkyPilot",
     "stack_data": "PostgreSQL, Temporal",
-    "website": "osmosis.ai",
+    "website_company": "osmosis.ai",
+    "website_personal": "zhengyang.sh",
     "linkedin": "linkedin.com/in/zhengyang-guo",
     "email": "zhengyang.brian.guo@gmail.com",
 }
@@ -182,10 +183,6 @@ def load_ascii_avatar() -> list[str]:
     return lines
 
 
-def format_number(value: int | None) -> str:
-    return "N/A" if value is None else f"{value:,}"
-
-
 def add_months(value: date, months: int) -> date:
     """Return a date shifted by whole calendar months, clamping month-end days."""
     month_index = value.month - 1 + months
@@ -223,149 +220,56 @@ def format_age(birthday: date, today: date | None = None) -> str:
     )
 
 
-def render_divider(label: str, y: int, *, section: bool = False) -> str:
-    heading = f"- {label}" if section else label
-    dash_count = max(1, TEXT_COLUMNS - len(heading) - 5)
-    line = f"{heading} -{'—' * dash_count}-—-"
-    return f'<text x="{TEXT_X}" y="{y}">{html.escape(line)}</text>'
-
-
 def render_text(
     text: str,
     y: int,
     column: int,
     class_name: str | None = None,
-    *,
-    text_anchor: str | None = None,
 ) -> str:
     class_attribute = f' class="{class_name}"' if class_name else ""
-    anchor_attribute = f' text-anchor="{text_anchor}"' if text_anchor else ""
     x = TEXT_X + column * CHAR_WIDTH
     return (
-        f'<text x="{x:.1f}" y="{y}"{class_attribute}{anchor_attribute}>'
+        f'<text x="{x:.1f}" y="{y}"{class_attribute}>'
         f"{html.escape(text)}</text>"
     )
 
 
-def render_positioned_field(
-    label: str, value: str, y: int, *, start_column: int, width: int
+def toml_string(value: str) -> str:
+    """Return a TOML-compatible basic string."""
+    return json.dumps(value, ensure_ascii=False)
+
+
+def toml_array(value: str) -> str:
+    items = (item.strip() for item in value.split(","))
+    return f"[{', '.join(toml_string(item) for item in items)}]"
+
+
+def toml_integer(value: int | None) -> str:
+    return toml_string("N/A") if value is None else f"{value:_}"
+
+
+def render_toml_section(name: str, y: int) -> str:
+    return render_text(f"[brian.{name}]", y, 0, "section")
+
+
+def render_toml_assignment(
+    key: str, value: str, y: int, *, equals_column: int
 ) -> str:
-    fixed_width = len(label) + len(":") + 2 + len(value)
-    leader = f" {'.' * max(1, width - fixed_width)} "
-    colon_column = start_column + len(label)
-    leader_column = colon_column + 1
-    value_column = leader_column + len(leader)
+    if len(key) >= equals_column:
+        raise ValueError(f"TOML key is too long for its section: {key}")
+
+    padding = " " * (equals_column - len(key))
+    line_length = equals_column + 2 + len(value)
+    if line_length > TOML_COLUMNS:
+        raise ValueError(f"TOML line is too wide ({line_length} columns): {key}")
+
     return "\n".join(
         [
-            render_text(label, y, start_column, "key"),
-            render_text(":", y, colon_column),
-            render_text(leader, y, leader_column, "cc"),
-            render_text(value, y, value_column, "value"),
+            render_text(key, y, 0, "key"),
+            render_text(f"{padding}= ", y, len(key), "operator"),
+            render_text(value, y, equals_column + 2, "value"),
         ]
     )
-
-
-def render_field(label: str, value: str, y: int) -> str:
-    return "\n".join(
-        [
-            render_text(". ", y, 0, "cc"),
-            render_positioned_field(
-                label, value, y, start_column=2, width=TEXT_COLUMNS - 2
-            ),
-        ]
-    )
-
-
-def render_right_aligned_field(
-    label: str,
-    value: str,
-    y: int,
-    *,
-    start_column: int,
-    end_column: int,
-) -> str:
-    """Render a field whose value ends at an exact SVG coordinate."""
-    colon_column = start_column + len(label)
-    leader_column = colon_column + 1
-    leader_width = end_column - leader_column - len(value)
-    leader = f" {'.' * max(1, leader_width - 2)} "
-    return "\n".join(
-        [
-            render_text(label, y, start_column, "key"),
-            render_text(":", y, colon_column),
-            render_text(leader, y, leader_column, "cc"),
-            render_text(
-                value,
-                y,
-                end_column,
-                "value",
-                text_anchor="end",
-            ),
-        ]
-    )
-
-
-def render_stats_pair(left: tuple[str, str], right: tuple[str, str], y: int) -> str:
-    return "\n".join(
-        [
-            render_text(". ", y, 0, "cc"),
-            render_positioned_field(*left, y, start_column=2, width=31),
-            render_text(" | ", y, 33),
-            render_right_aligned_field(
-                *right,
-                y,
-                start_column=36,
-                end_column=TEXT_COLUMNS,
-            ),
-        ]
-    )
-
-
-def render_loc_stats(stats: LocStats | None, y: int) -> str:
-    if stats is None:
-        return render_field("GitHub LOC", "N/A", y)
-
-    net = format_number(stats.net)
-    additions = format_number(stats.additions)
-    deletions = format_number(stats.deletions)
-    suffix_width = len(additions) + len(deletions) + 9
-    suffix_column = TEXT_COLUMNS - suffix_width
-    fragments = [
-        render_text(". ", y, 0, "cc"),
-        render_right_aligned_field(
-            "GitHub LOC",
-            net,
-            y,
-            start_column=2,
-            end_column=suffix_column,
-        ),
-        render_text(" (", y, suffix_column),
-        render_text(additions, y, suffix_column + 2, "add"),
-        render_text("++", y, suffix_column + 2 + len(additions), "add"),
-        render_text(
-            ", ",
-            y,
-            suffix_column + 4 + len(additions),
-        ),
-        render_text(
-            deletions,
-            y,
-            suffix_column + 6 + len(additions),
-            "delete",
-        ),
-        render_text(
-            "--",
-            y,
-            suffix_column + 6 + len(additions) + len(deletions),
-            "delete",
-        ),
-        render_text(
-            ")",
-            y,
-            suffix_column + 8 + len(additions) + len(deletions),
-        ),
-    ]
-    return "\n".join(fragments)
 
 
 def render_svg(
@@ -386,27 +290,83 @@ def render_svg(
         if loc_stats is not None
         else profile.get("public_repos")
     )
-    fields = [
-        ("OS", PROFILE["os"]),
-        ("Uptime", format_age(PROFILE["birthday"])),
-        ("Host", PROFILE["company"]),
-        ("Kernel", PROFILE["role"]),
-        ("Location", profile.get("location") or PROFILE["location"]),
-        ("Focus", PROFILE["focus"]),
-        ("IDE", PROFILE["ide"]),
-        ("Languages.Programming", PROFILE["languages_programming"]),
-        ("Languages.Computer", PROFILE["languages_computer"]),
-        ("Languages.Real", PROFILE["languages_real"]),
-        ("Tools.AI", PROFILE["tools_ai"]),
-        ("Frameworks", PROFILE["frameworks"]),
-        ("Stack.Application", PROFILE["stack_application"]),
-        ("Stack.Infrastructure", PROFILE["stack_infrastructure"]),
-        ("Stack.Data", PROFILE["stack_data"]),
-    ]
-    contacts = [
-        ("Company.Website", PROFILE["website"]),
-        ("LinkedIn", PROFILE["linkedin"]),
-        ("Email", PROFILE["email"]),
+    github_stats = (
+        "{ "
+        f"repos={toml_integer(repository_count)}, "
+        f"stars={toml_integer(stars)}, "
+        f"contrib={toml_integer(contributions)}, "
+        f"followers={toml_integer(profile.get('followers'))}"
+        " }"
+    )
+    github_loc = (
+        toml_string("N/A")
+        if loc_stats is None
+        else (
+            "{ "
+            f"net={toml_integer(loc_stats.net)}, "
+            f"additions={toml_integer(loc_stats.additions)}, "
+            f"deletions={toml_integer(loc_stats.deletions)}"
+            " }"
+        )
+    )
+    sections = [
+        (
+            "system",
+            [
+                ("os", toml_array(PROFILE["os"])),
+                ("uptime", toml_string(format_age(PROFILE["birthday"]))),
+                ("host", toml_string(PROFILE["company"])),
+                ("kernel", toml_string(PROFILE["role"])),
+                (
+                    "location",
+                    toml_string(profile.get("location") or PROFILE["location"]),
+                ),
+            ],
+        ),
+        (
+            "developer",
+            [
+                ("focus", toml_array(PROFILE["focus"])),
+                ("ide", toml_string(PROFILE["ide"])),
+                (
+                    "languages.programming",
+                    toml_array(PROFILE["languages_programming"]),
+                ),
+                (
+                    "languages.computer",
+                    toml_array(PROFILE["languages_computer"]),
+                ),
+                ("languages.real", toml_array(PROFILE["languages_real"])),
+                ("tools.ai", toml_array(PROFILE["tools_ai"])),
+                ("frameworks", toml_array(PROFILE["frameworks"])),
+            ],
+        ),
+        (
+            "stack",
+            [
+                ("application", toml_array(PROFILE["stack_application"])),
+                (
+                    "infrastructure",
+                    toml_array(PROFILE["stack_infrastructure"]),
+                ),
+                ("data", toml_array(PROFILE["stack_data"])),
+            ],
+        ),
+        (
+            "contact",
+            [
+                (
+                    "website",
+                    "{ "
+                    f"personal={toml_string(PROFILE['website_personal'])}, "
+                    f"company={toml_string(PROFILE['website_company'])}"
+                    " }",
+                ),
+                ("linkedin", toml_string(PROFILE["linkedin"])),
+                ("email", toml_string(PROFILE["email"])),
+            ],
+        ),
+        ("github", [("stats", github_stats), ("loc", github_loc)]),
     ]
 
     avatar_columns = max(len(line) for line in ascii_art)
@@ -423,32 +383,25 @@ def render_svg(
         for index, line in enumerate(ascii_art)
     )
 
-    profile_lines = [render_divider("brian@github", 30)]
-    profile_lines.extend(
-        render_field(label, str(value), 50 + index * 20)
-        for index, (label, value) in enumerate(fields)
-    )
-    profile_lines.append(render_divider("Contact", 350, section=True))
-    profile_lines.extend(
-        render_field(label, str(value), 370 + index * 20)
-        for index, (label, value) in enumerate(contacts)
-    )
-    profile_lines.append(render_divider("GitHub Stats", 450, section=True))
-    profile_lines.append(
-        render_stats_pair(
-            ("Repos", format_number(repository_count)),
-            ("Stars", format_number(stars)),
-            470,
-        )
-    )
-    profile_lines.append(
-        render_stats_pair(
-            ("Contributions (365d)", format_number(contributions)),
-            ("Followers", format_number(profile.get("followers"))),
-            490,
-        )
-    )
-    profile_lines.append(render_loc_stats(loc_stats, 510))
+    profile_lines: list[str] = []
+    y = 30
+    for section_name, fields in sections:
+        profile_lines.append(render_toml_section(section_name, y))
+        y += 20
+        equals_column = max(len(key) for key, _ in fields) + 1
+        for key, value in fields:
+            profile_lines.append(
+                render_toml_assignment(
+                    key,
+                    value,
+                    y,
+                    equals_column=equals_column,
+                )
+            )
+            y += 20
+
+    if y != CARD_HEIGHT:
+        raise ValueError(f"TOML profile used an unexpected height: {y}px")
 
     return f'''<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="{CARD_WIDTH}px" height="{CARD_HEIGHT}px" viewBox="0 0 {CARD_WIDTH} {CARD_HEIGHT}" font-size="16px" role="img" aria-labelledby="title desc">
@@ -462,7 +415,9 @@ font-display: swap;
 -webkit-size-adjust: 109%;
 size-adjust: 109%;
 }}
+.section {{fill: {theme["key"]}; font-weight: 700;}}
 .key {{fill: {theme["key"]};}}
+.operator {{fill: {theme["muted"]};}}
 .value {{fill: {theme["value"]};}}
 .cc {{fill: {theme["muted"]};}}
 .add {{fill: {theme["add"]};}}
@@ -474,7 +429,7 @@ text, tspan {{white-space: pre;}}
 <text x="{AVATAR_X}" y="24" fill="{theme["text"]}" class="ascii">
 {avatar_spans}
 </text>
-<g fill="{theme["text"]}">
+<g fill="{theme["text"]}" class="toml" font-size="14px">
 {chr(10).join(profile_lines)}
 </g>
 </svg>
