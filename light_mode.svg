@@ -68,7 +68,7 @@ text, tspan {white-space: pre;}
 <text x="481.3" y="50" class="value">[&quot;macOS&quot;, &quot;iOS&quot;, &quot;Linux&quot;]</text>
 <text x="390.0" y="70" class="key">uptime</text>
 <text x="439.8" y="70" class="operator">   = </text>
-<text x="481.3" y="70" class="value">&quot;26 years, 9 months, 20 days&quot;</text>
+<text x="481.3" y="70" class="value">&quot;26 years, 9 months, 21 days&quot;</text>
 <text x="390.0" y="90" class="key">host</text>
 <text x="423.2" y="90" class="operator">     = </text>
 <text x="481.3" y="90" class="value">&quot;Osmosis AI&quot;</text>
