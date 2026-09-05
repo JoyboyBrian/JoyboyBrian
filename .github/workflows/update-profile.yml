@@ -9,7 +9,8 @@ on:
       - main
     paths:
       - ".github/workflows/update-profile.yml"
-      - "assets/avatar.txt"
+      - "assets/avatar-dark.txt"
+      - "assets/avatar-light.txt"
       - "scripts/github_stats.py"
       - "scripts/update_profile.py"
 
