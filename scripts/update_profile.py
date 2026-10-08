@@ -22,7 +22,10 @@ except ImportError:  # Support `python scripts/update_profile.py`.
 
 
 ROOT = Path(__file__).resolve().parents[1]
-AVATAR_PATH = ROOT / "assets" / "avatar.txt"
+AVATAR_PATHS = {
+    "dark_mode.svg": ROOT / "assets" / "avatar-dark.txt",
+    "light_mode.svg": ROOT / "assets" / "avatar-light.txt",
+}
 USERNAME = os.environ.get("PROFILE_USERNAME", "JoyboyBrian")
 
 CARD_WIDTH = 985
@@ -172,14 +175,14 @@ def get_contributions(token: str | None) -> int | None:
         return None
 
 
-def load_ascii_avatar() -> list[str]:
-    """Load the hand-approved ASCII portrait used by both themes."""
-    if not AVATAR_PATH.exists():
-        raise FileNotFoundError(f"{AVATAR_PATH} is missing")
+def load_ascii_avatar(path: Path) -> list[str]:
+    """Load a hand-approved ASCII portrait for one theme."""
+    if not path.exists():
+        raise FileNotFoundError(f"{path} is missing")
 
-    lines = AVATAR_PATH.read_text(encoding="utf-8").splitlines()
+    lines = path.read_text(encoding="utf-8").splitlines()
     if not lines or not any(line.strip() for line in lines):
-        raise ValueError(f"{AVATAR_PATH} does not contain an ASCII portrait")
+        raise ValueError(f"{path} does not contain an ASCII portrait")
     return lines
 
 
@@ -442,7 +445,6 @@ def main() -> None:
     profile = get_profile(api_token)
     repositories = get_repositories(api_token)
     contributions = get_contributions(api_token)
-    ascii_art = load_ascii_avatar()
     loc_stats: LocStats | None = None
 
     if tokens:
@@ -463,6 +465,7 @@ def main() -> None:
         )
 
     for filename, theme in THEMES.items():
+        ascii_art = load_ascii_avatar(AVATAR_PATHS[filename])
         output = render_svg(
             theme,
             ascii_art,
